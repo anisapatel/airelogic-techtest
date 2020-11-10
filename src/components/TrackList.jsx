@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import * as api from "../Api";
+import * as api from "../utils/Api";
+import TrackCard from "./TrackCard";
 
 class TrackList extends Component {
   state = {
@@ -16,7 +17,13 @@ class TrackList extends Component {
     });
   };
   render() {
-    return <div></div>;
+    return (
+      <div>
+        {this.state.tracks.map((track) => {
+          return <TrackCard track={track} />;
+        })}
+      </div>
+    );
   }
 }
 
