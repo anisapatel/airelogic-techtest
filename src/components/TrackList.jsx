@@ -4,7 +4,7 @@ import TrackCard from "./TrackCard";
 
 class TrackList extends Component {
   state = {
-    tracks: [],
+    releases: [],
   };
 
   componentDidMount() {
@@ -12,15 +12,17 @@ class TrackList extends Component {
   }
 
   fetchTracks = () => {
-    api.fetchReleasesByArtistId().then((tracks) => {
-      this.setState({ tracks });
+    api.fetchReleasesByArtistId().then((releases) => {
+      this.setState({ releases });
     });
   };
   render() {
     return (
       <div>
-        {this.state.tracks.map((track) => {
-          return <TrackCard track={track} />;
+        {this.state.releases.map((release) => {
+          return release.media[0].tracks.map((track) => {
+            return <TrackCard track={track.title} key={track.id} />;
+          });
         })}
       </div>
     );
