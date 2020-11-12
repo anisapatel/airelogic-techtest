@@ -1,4 +1,35 @@
-.App {
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header__title {
+  font-size: 3rem;
+}
+
+/* Search Form */
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 2rem;
+}
+.search-form__input {
+  font-size: 1.5rem;
+  /* border-radius: 16px; */
+  padding: 0.5rem 1.5rem;
+  outline: none;
+}
+.search-form__button {
+  font-size: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  outline: none;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,7 +66,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .lyricsText {
   display: block;

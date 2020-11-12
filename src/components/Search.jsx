@@ -9,24 +9,22 @@ class Search extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.handleSearchArtist(this.state.input);
+    this.props.handleSearchArtist(this.state.input);
     this.setState({ input: "" });
-  };
-
-  handleSearchArtist = (searchTerm) => {
-    api.getArtistData(searchTerm).then((artistData) => {
-      this.props.fetchTracks(artistData);
-    });
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="search-form">
         <input
           type="text"
           onChange={this.handleChange}
           value={this.state.input}
+          placeholder="Search any artist"
+          className="search-form__input"
         ></input>
-        <button type="submit">Search</button>
+        <button type="submit" className="search-form__button">
+          Search
+        </button>
       </form>
     );
   }

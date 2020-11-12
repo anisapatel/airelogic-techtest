@@ -14,20 +14,29 @@ class TrackList extends Component {
   };
 
   componentDidMount() {
-    this.fetchTracks(this.state.artistData);
+    this.fetchTracks();
   }
 
-  fetchTracks = (artistData) => {
-    this.setState({ artistData });
-    api.fetchReleasesByArtistId(artistData.artistId).then((trackList) => {
-      this.setState({ trackList });
+  fetchTracks = () => {
+    api
+      .fetchReleasesByArtistId(this.state.artistData.artistId)
+      .then((trackList) => {
+        this.setState({ trackList });
+      });
+  };
+
+  handleSearchArtist = (searchTerm) => {
+    api.getArtistData(searchTerm).then((artistData) => {
+      this.setState({ artistData }, () => {
+        this.fetchTracks();
+      });
     });
   };
 
   render() {
     return (
-      <div>
-        <Search fetchTracks={this.fetchTracks} />
+      <main>
+        <Search handleSearchArtist={this.handleSearchArtist} />
         {this.state.trackList.map((track) => {
           if (track.length > 0) {
             return (
@@ -39,7 +48,7 @@ class TrackList extends Component {
             );
           }
         })}
-      </div>
+      </main>
     );
   }
 }
