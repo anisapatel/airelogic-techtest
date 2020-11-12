@@ -18,7 +18,6 @@ export const getArtistData = (artist) => {
       const artist = {
         artistId: data.artists[0].id,
         artistName: data.artists[0].name,
-        description: data.artists[0].disambiguation,
       };
       return artist;
     });

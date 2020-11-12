@@ -4,25 +4,37 @@ import TrackLyrics from "./TrackLyrics";
 const TrackCard = (props) => {
   const [isVisible, setVisible] = useState(false);
 
-  const handleClick = () => {
-    setVisible(!isVisible);
+  const handleClick = (event) => {
+    console.log(event.target.innerText);
+    // props.getLyrics(text);
   };
 
   return (
-    <div>
-      {isVisible && (
-        <TrackLyrics
-          title={props.track.title}
-          artist={props.artistData.artistName}
-        />
-      )}
+    <div
+      style={{
+        position: "relative",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}
+    >
       <div>
-        <button onClick={handleClick}>
-          <p>{props.track.title}</p>
+        <button onClick={() => props.getLyrics(props.tracks.title)}>
+          {props.track.title}
         </button>
-
-        <p>{(props.track.length / 60000).toFixed(2)}</p>
       </div>
+
+      {/* <p>{(props.track.length / 60000).toFixed(2)}</p> */}
+
+      {/* <div>
+        <h2>Lyrics</h2>
+        {isVisible && (
+          <TrackLyrics
+            title={props.track.title}
+            artist={props.artistData.artistName}
+          />
+        )}
+      </div> */}
     </div>
   );
 };

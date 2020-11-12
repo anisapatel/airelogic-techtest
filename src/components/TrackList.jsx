@@ -7,14 +7,19 @@ class TrackList extends Component {
   state = {
     trackList: [],
     artistData: {
-      artistName: "Beyonce",
-      artistId: "859d0860-d480-4efd-970c-c05d5f1776b8",
-      description: "US singer, songwriter, record producer & actress",
+      artistName: "The Beatles",
+      artistId: "b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d",
     },
   };
 
   componentDidMount() {
     this.fetchTracks();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.artistData.artistId !== this.state.artistData.artistId) {
+      this.fetchTracks();
+    }
   }
 
   fetchTracks = () => {
@@ -27,10 +32,12 @@ class TrackList extends Component {
 
   handleSearchArtist = (searchTerm) => {
     api.getArtistData(searchTerm).then((artistData) => {
-      this.setState({ artistData }, () => {
-        this.fetchTracks();
-      });
+      this.setState({ artistData });
     });
+  };
+
+  getLyrics = (title) => {
+    console.log(title, "<--title");
   };
 
   render() {
@@ -44,6 +51,7 @@ class TrackList extends Component {
                 track={track}
                 key={track.id}
                 artistData={this.state.artistData}
+                getLyrics={this.getLyrics}
               />
             );
           }
