@@ -8,6 +8,23 @@ let options = {
   headers: headers,
 };
 
+export const getArtistData = (artist) => {
+  return fetch(
+    `https://musicbrainz.org/ws/2/artist/?query=artist:${artist}&fmt=json`,
+    options
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const artist = {
+        artistId: data.artists[0].id,
+        artistName: data.artists[0].name,
+        description: data.artists[0].disambiguation,
+      };
+      console.log(artist, "<--artist");
+      return artist;
+    });
+};
+
 export const fetchReleasesByArtistId = () => {
   return fetch(
     `https://musicbrainz.org/ws/2/release/?artist=859d0860-d480-4efd-970c-c05d5f1776b8&inc=recordings&limit=100&fmt=json`,

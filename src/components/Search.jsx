@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 
 class Search extends Component {
-  state = { searchTerm: "" };
+  state = { input: "" };
   handleChange = ({ target: { value } }) => {
-    this.setState({ searchTerm: value });
+    this.setState({ input: value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.updateSearchTerm(this.state.searchTerm);
-    this.setState({ searchTerm: "" });
+    this.props.updateSearchTerm(this.state.input);
+    this.setState({ input: "" });
   };
   render() {
     return (
@@ -17,7 +17,7 @@ class Search extends Component {
         <input
           type="text"
           onChange={this.handleChange}
-          value={this.state.searchTerm}
+          value={this.state.input}
         ></input>
         <button type="submit">Search</button>
       </form>
