@@ -20,7 +20,6 @@ export const getArtistData = (artist) => {
         artistName: data.artists[0].name,
         description: data.artists[0].disambiguation,
       };
-      console.log(artist, "<--artist");
       return artist;
     });
 };
@@ -39,11 +38,12 @@ export const fetchReleasesByArtistId = (artistId) => {
     });
 };
 
-export const fetchLyrics = (title) => {
-  return fetch(`https://api.lyrics.ovh/v1/beyonce/${title}`)
+export const fetchLyrics = (artistName, title) => {
+  console.log(artistName, title, "<--going into function");
+  return fetch(`https://api.lyrics.ovh/v1/${artistName}/${title}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(JSON.stringify(data.lyrics), "<--data");
+      console.log(data.lyrics, "<--data");
       return data.lyrics;
     });
 };

@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "@reach/router";
-const TrackCard = ({ track: { title, length } }) => {
+import TrackLyrics from "./TrackLyrics";
+const TrackCard = (props) => {
+  const [isVisible, setVisible] = useState(false);
+
+  const handleClick = () => {
+    setVisible(!isVisible);
+  };
+
   return (
     <div>
-      <Link to={`/tracks/${title}`}>
-        <p>{title}</p>
-      </Link>
-      <p>{(length / 60000).toFixed(2)}</p>
+      {isVisible && (
+        <TrackLyrics
+          title={props.track.title}
+          artist={props.artistData.artistName}
+        />
+      )}
+      <div>
+        <button onClick={handleClick}>
+          <p>{props.track.title}</p>
+        </button>
+
+        <p>{(props.track.length / 60000).toFixed(2)}</p>
+      </div>
     </div>
   );
 };

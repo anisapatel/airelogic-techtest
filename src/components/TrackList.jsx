@@ -6,43 +6,37 @@ import Search from "./Search";
 class TrackList extends Component {
   state = {
     trackList: [],
-    searchTerm: "",
-    artistData: {},
+    artistData: {
+      artistName: "Beyonce",
+      artistId: "859d0860-d480-4efd-970c-c05d5f1776b8",
+      description: "US singer, songwriter, record producer & actress",
+    },
   };
 
   componentDidMount() {
-    let beyonceId = "859d0860-d480-4efd-970c-c05d5f1776b8";
-    this.fetchTracks(beyonceId);
+    this.fetchTracks(this.state.artistData);
   }
 
-  fetchTracks = (artistId) => {
-    api.fetchReleasesByArtistId(artistId).then((trackList) => {
+  fetchTracks = (artistData) => {
+    this.setState({ artistData });
+    api.fetchReleasesByArtistId(artistData.artistId).then((trackList) => {
       this.setState({ trackList });
-    });
-  };
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(prevState.artistData.artistId, "<--prevState");
-  //   console.log(this.state.artistData.artistId, "<--new state");
-  //   if (prevState.artistData.artistId !== this.state.artistData.artistId) {
-  //     this.fetchTracks();
-  //   }
-  // }
-
-  handleSearchArtist = (searchTerm) => {
-    api.getArtistData(searchTerm).then((artistData) => {
-      this.setState({ artistData });
-      this.fetchTracks(artistData.artistId);
     });
   };
 
   render() {
     return (
       <div>
-        <Search handleSearchArtist={this.handleSearchArtist} />
+        <Search fetchTracks={this.fetchTracks} />
         {this.state.trackList.map((track) => {
           if (track.length > 0) {
-            return <TrackCard track={track} key={track.id} />;
+            return (
+              <TrackCard
+                track={track}
+                key={track.id}
+                artistData={this.state.artistData}
+              />
+            );
           }
         })}
       </div>

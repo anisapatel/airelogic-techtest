@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as api from "../utils/Api";
 
 class Search extends Component {
   state = { input: "" };
@@ -8,8 +9,14 @@ class Search extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.handleSearchArtist(this.state.input);
+    this.handleSearchArtist(this.state.input);
     this.setState({ input: "" });
+  };
+
+  handleSearchArtist = (searchTerm) => {
+    api.getArtistData(searchTerm).then((artistData) => {
+      this.props.fetchTracks(artistData);
+    });
   };
   render() {
     return (

@@ -2,11 +2,11 @@ import * as api from "../utils/Api";
 
 import React, { Component } from "react";
 
-class TrackCard extends Component {
+class TrackLyrics extends Component {
   state = { lyrics: "" };
 
   componentDidMount() {
-    api.fetchLyrics(this.props.title).then((lyrics) => {
+    api.fetchLyrics(this.props.artist, this.props.title).then((lyrics) => {
       this.setState({ lyrics });
     });
   }
@@ -33,4 +33,4 @@ class TrackCard extends Component {
   }
 }
 
-export default TrackCard;
+export default TrackLyrics;

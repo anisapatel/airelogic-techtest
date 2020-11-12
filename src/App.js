@@ -1,16 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
+import * as api from "./utils/Api";
 import TrackList from "./components/TrackList";
-import TrackLyrics from "./components/TrackLyrics";
-import { Router } from "@reach/router";
+import Search from "./components/Search";
+import React, { useState } from "react";
+// import TrackLyrics from "./components/TrackLyrics";
+// import { Router } from "@reach/router";
 
 function App() {
   return (
     <main>
-      <Router>
-        <TrackList path="/" />
-        <TrackLyrics path="/tracks/:title" />
-      </Router>
+      <TrackList />
     </main>
   );
 }
