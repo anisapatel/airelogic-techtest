@@ -11,27 +11,35 @@ class TrackList extends Component {
   };
 
   componentDidMount() {
-    this.fetchTracks();
+    let beyonceId = "859d0860-d480-4efd-970c-c05d5f1776b8";
+    this.fetchTracks(beyonceId);
   }
 
-  fetchTracks = () => {
-    api
-      .fetchReleasesByArtistId(this.state.artistData.artistId)
-      .then((trackList) => {
-        this.setState({ trackList });
-      });
+  fetchTracks = (artistId) => {
+    api.fetchReleasesByArtistId(artistId).then((trackList) => {
+      this.setState({ trackList });
+    });
   };
 
-  updateSearchTerm = (searchTerm) => {
-    api.getArtistData(searchTerm).then(({ artistData }) => {
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevState.artistData.artistId, "<--prevState");
+  //   console.log(this.state.artistData.artistId, "<--new state");
+  //   if (prevState.artistData.artistId !== this.state.artistData.artistId) {
+  //     this.fetchTracks();
+  //   }
+  // }
+
+  handleSearchArtist = (searchTerm) => {
+    api.getArtistData(searchTerm).then((artistData) => {
       this.setState({ artistData });
+      this.fetchTracks(artistData.artistId);
     });
   };
 
   render() {
     return (
       <div>
-        <Search />
+        <Search handleSearchArtist={this.handleSearchArtist} />
         {this.state.trackList.map((track) => {
           if (track.length > 0) {
             return <TrackCard track={track} key={track.id} />;

@@ -8,12 +8,12 @@ class Search extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.updateSearchTerm(this.state.input);
+    this.props.handleSearchArtist(this.state.input);
     this.setState({ input: "" });
   };
   render() {
     return (
-      <form handleSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           onChange={this.handleChange}

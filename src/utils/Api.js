@@ -25,9 +25,9 @@ export const getArtistData = (artist) => {
     });
 };
 
-export const fetchReleasesByArtistId = () => {
+export const fetchReleasesByArtistId = (artistId) => {
   return fetch(
-    `https://musicbrainz.org/ws/2/release/?artist=859d0860-d480-4efd-970c-c05d5f1776b8&inc=recordings&limit=100&fmt=json`,
+    `https://musicbrainz.org/ws/2/release/?artist=${artistId}&inc=recordings&limit=100&fmt=json`,
     options
   )
     .then((response) => response.json())
