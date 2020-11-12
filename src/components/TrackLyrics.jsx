@@ -7,14 +7,27 @@ class TrackCard extends Component {
 
   componentDidMount() {
     api.fetchLyrics(this.props.title).then((lyrics) => {
-      console.log(lyrics, "<--");
       this.setState({ lyrics });
     });
   }
   render() {
     return (
-      <div>
-        <p>{this.state.lyrics}</p>
+      <div className="lyricsText">
+        <p
+          style={{
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          {this.state.lyrics}
+        </p>
+        {/* {this.state.lyrics.split(/[\n|\r]+/).map((lyric, index) => {
+          return (
+            <span key={index}>
+              {lyric}
+              <br />
+            </span>
+          );
+        })} */}
       </div>
     );
   }

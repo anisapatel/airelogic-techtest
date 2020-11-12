@@ -26,6 +26,7 @@ export const fetchLyrics = (title) => {
   return fetch(`https://api.lyrics.ovh/v1/beyonce/${title}`)
     .then((response) => response.json())
     .then((data) => {
+      console.log(JSON.stringify(data.lyrics), "<--data");
       return data.lyrics;
     });
 };
