@@ -1,5 +1,3 @@
-import * as utils from "./index";
-
 let headers = {
   "User-Agent": "airelogic-techtest/0.1.0 (anisa_patel@live.co.uk)",
 };

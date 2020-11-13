@@ -4,8 +4,7 @@
 
 Able to view tracks by any artist
 Able to view lyrics upon track selection
-UI to show the selected track
-Easy to view interface
+Simple but easy to use interface
 
 ## Improvements/Next Steps
 

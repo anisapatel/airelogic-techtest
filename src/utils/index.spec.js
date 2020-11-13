@@ -1,8 +1,8 @@
 const { expect } = require("chai");
-const { filterTracks } = require("./index");
+const { removeDuplicateTitles } = require("./index");
 
-describe("filterTracks", () => {
+describe("removeDuplicateTitles", () => {
   it("when passed an array of releases, returns a tracklist", () => {
-    expect(filterTracks());
+    expect(removeDuplicateTitles());
   });
 });

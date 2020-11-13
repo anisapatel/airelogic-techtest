@@ -1,1 +1,3 @@
-export const getUniqueTrackList = (list) => {};
+const removeDuplicateTitles = () => {};
+
+module.exports = { removeDuplicateTitles };
