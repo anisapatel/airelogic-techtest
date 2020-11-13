@@ -2,22 +2,15 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const TrackCard = ({ track, artistData }) => {
+  // console.log(track, artistData, "<--a");
   return (
-    <div
-      style={{
-        position: "relative",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-      }}
-    >
+    <div className="content">
       <Link
-        to={`/tracks/${track.title}`}
-        state={{ artist: artistData.artistName }}
+        to={`/tracks/${artistData.artistName}/${track.title}`}
+        className="content__link"
       >
-        <h4>{track.title}</h4>
+        <p className="content__title">{track.title}</p>
       </Link>
-      <p>{(track.length / 60000).toFixed(2)}</p>
     </div>
   );
 };

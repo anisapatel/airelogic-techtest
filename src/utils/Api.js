@@ -19,7 +19,6 @@ export const getArtistData = (artist) => {
         artistId: data.artists[0].id,
         artistName: data.artists[0].name,
       };
-      console.log(artist, "<--");
       return artist;
     });
 };

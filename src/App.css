@@ -3,10 +3,11 @@
 .header {
   display: flex;
   justify-content: center;
+  padding: 1.5rem 0;
 }
 
 .header__title {
-  /* font-size: 3rem; */
+  font-size: 2rem;
 }
 
 /* Search Form */
@@ -14,61 +15,79 @@
 .search-form {
   display: flex;
   justify-content: center;
-  align-self: center;
-  padding: 2rem;
 }
 .search-form__input {
-  /* font-size: 1.5rem; */
-  /* border-radius: 16px; */
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 0.5rem;
+  width: 40%;
+  font-size: 1rem;
   outline: none;
 }
 .search-form__button {
-  /* font-size: 1.5rem; */
   padding: 0.5rem 1.5rem;
   outline: none;
+  font-size: 1rem;
 }
 
-/* .App {
-  text-align: center;
-}
+/* Track List */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main__title {
+  align-self: flex-start;
+  padding: 1.5rem;
+  font-size: 1.25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.main__list {
+  text-decoration: none;
+}
 
-.lyricsText {
-  display: block;
-  white-space: "pre-wrap";
+.main__list__item {
+  text-decoration: none;
+  border-bottom-width: 1;
+  border-color: #eee;
+  padding: 2px;
+  margin: 1px;
+}
+
+.main__list__item:hover {
+  background-color: #d3d3d3;
+}
+
+/* Track Card */
+
+.trackcard {
+  padding-left: 1rem;
+  width: 600px;
+}
+
+.content {
+  margin-left: 1rem;
+  padding: 15;
+}
+
+.content__link {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  font-family: "Verdana";
+}
+
+/*lyrics */
+
+.lyrics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2rem;
+}
+
+.lyrics__text {
+  white-space: pre-wrap;
 }

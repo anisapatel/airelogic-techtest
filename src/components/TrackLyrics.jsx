@@ -6,18 +6,16 @@ class TrackLyrics extends Component {
   state = { lyrics: "" };
 
   componentDidMount() {
-    api
-      .fetchLyrics(this.props.state.artist, this.props.title)
-      .then((lyrics) => {
-        this.setState({ lyrics });
-      });
+    api.fetchLyrics(this.props.artist, this.props.title).then((lyrics) => {
+      this.setState({ lyrics });
+    });
   }
   render() {
     return (
-      <div className="lyricsText">
-        <h2>{this.props.title}</h2>
-        <p>{this.state.lyrics}</p>
-      </div>
+      <section className="lyrics">
+        <h2 className="lyrics__title">{this.props.title}</h2>
+        <p className="lyrics__text">{this.state.lyrics}</p>
+      </section>
     );
   }
 }

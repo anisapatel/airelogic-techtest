@@ -38,17 +38,26 @@ class TrackList extends Component {
 
   render() {
     return (
-      <main>
+      <main className="main">
         <Search handleSearchArtist={this.handleSearchArtist} />
-        {this.state.trackList.map((track) => {
-          return (
-            <TrackCard
-              track={track}
-              key={track.id}
-              artistData={this.state.artistData}
-            />
-          );
-        })}
+        <h2 className="main__title">
+          All tracks for "{this.state.artistData.artistName}"
+        </h2>
+        <section className="trackcard">
+          <ol className="main__list">
+            {this.state.trackList.map((track) => {
+              return (
+                <li className="main__list__item">
+                  <TrackCard
+                    track={track}
+                    key={track.id}
+                    artistData={this.state.artistData}
+                  />
+                </li>
+              );
+            })}
+          </ol>
+        </section>
       </main>
     );
   }
