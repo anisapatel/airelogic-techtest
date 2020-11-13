@@ -36,25 +36,18 @@ class TrackList extends Component {
     });
   };
 
-  getLyrics = (title) => {
-    console.log(title, "<--title");
-  };
-
   render() {
     return (
       <main>
         <Search handleSearchArtist={this.handleSearchArtist} />
         {this.state.trackList.map((track) => {
-          if (track.length > 0) {
-            return (
-              <TrackCard
-                track={track}
-                key={track.id}
-                artistData={this.state.artistData}
-                getLyrics={this.getLyrics}
-              />
-            );
-          }
+          return (
+            <TrackCard
+              track={track}
+              key={track.id}
+              artistData={this.state.artistData}
+            />
+          );
         })}
       </main>
     );

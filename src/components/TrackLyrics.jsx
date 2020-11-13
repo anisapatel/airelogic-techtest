@@ -6,28 +6,17 @@ class TrackLyrics extends Component {
   state = { lyrics: "" };
 
   componentDidMount() {
-    api.fetchLyrics(this.props.artist, this.props.title).then((lyrics) => {
-      this.setState({ lyrics });
-    });
+    api
+      .fetchLyrics(this.props.state.artist, this.props.title)
+      .then((lyrics) => {
+        this.setState({ lyrics });
+      });
   }
   render() {
     return (
       <div className="lyricsText">
-        <p
-          style={{
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {this.state.lyrics}
-        </p>
-        {/* {this.state.lyrics.split(/[\n|\r]+/).map((lyric, index) => {
-          return (
-            <span key={index}>
-              {lyric}
-              <br />
-            </span>
-          );
-        })} */}
+        <h2>{this.props.title}</h2>
+        <p>{this.state.lyrics}</p>
       </div>
     );
   }

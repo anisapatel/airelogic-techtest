@@ -6,7 +6,7 @@
 }
 
 .header__title {
-  font-size: 3rem;
+  /* font-size: 3rem; */
 }
 
 /* Search Form */
@@ -18,13 +18,13 @@
   padding: 2rem;
 }
 .search-form__input {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   /* border-radius: 16px; */
   padding: 0.5rem 1.5rem;
   outline: none;
 }
 .search-form__button {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   padding: 0.5rem 1.5rem;
   outline: none;
 }
@@ -70,4 +70,5 @@
 
 .lyricsText {
   display: block;
+  white-space: "pre-wrap";
 }

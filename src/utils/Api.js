@@ -19,6 +19,7 @@ export const getArtistData = (artist) => {
         artistId: data.artists[0].id,
         artistName: data.artists[0].name,
       };
+      console.log(artist, "<--");
       return artist;
     });
 };
@@ -38,11 +39,9 @@ export const fetchReleasesByArtistId = (artistId) => {
 };
 
 export const fetchLyrics = (artistName, title) => {
-  console.log(artistName, title, "<--going into function");
   return fetch(`https://api.lyrics.ovh/v1/${artistName}/${title}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.lyrics, "<--data");
       return data.lyrics;
     });
 };
