@@ -20,7 +20,8 @@ export const getArtistData = (artist) => {
         artistName: data.artists[0].name,
       };
       return artist;
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 export const fetchReleasesByArtistId = (artistId) => {
@@ -34,7 +35,8 @@ export const fetchReleasesByArtistId = (artistId) => {
         return release.media[0].tracks;
       });
       return removeDuplicateTitles(result.flat());
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 export const fetchLyrics = (artistName, title) => {
@@ -42,7 +44,8 @@ export const fetchLyrics = (artistName, title) => {
     .then((response) => response.json())
     .then((data) => {
       return data.lyrics;
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 const removeDuplicateTitles = (tracksArr) => {

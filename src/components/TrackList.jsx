@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import * as api from "../utils/Api";
 import TrackCard from "./TrackCard";
 import Search from "./Search";
+import Loader from "./Loader";
 
 class TrackList extends Component {
   state = {
+    isLoading: true,
     trackList: [],
     artistData: {
       artistName: "The Beatles",
@@ -26,7 +28,7 @@ class TrackList extends Component {
     api
       .fetchReleasesByArtistId(this.state.artistData.artistId)
       .then((trackList) => {
-        this.setState({ trackList });
+        this.setState({ trackList, isLoading: false });
       });
   };
 
@@ -37,6 +39,7 @@ class TrackList extends Component {
   };
 
   render() {
+    if (this.state.isLoading) return <Loader />;
     return (
       <main className="main">
         <Search handleSearchArtist={this.handleSearchArtist} />
