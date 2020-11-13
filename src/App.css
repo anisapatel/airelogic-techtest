@@ -85,7 +85,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 2rem;
+  padding: 0.5rem 2rem;
 }
 
 .lyrics__text {
