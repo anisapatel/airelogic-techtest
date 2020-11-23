@@ -14,7 +14,7 @@
 - Improve styling to scroll through tracks within set div height
 - Show information about artist including picture, description
 - Add category selection using genre and filter tracks by album
-- Proper Error handling
+- Error handling
 
 ## Getting Started
 
