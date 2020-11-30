@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import PropTypes from "prop-types";
 
 const TrackCard = ({ track, artistData }) => {
   // console.log(track, artistData, "<--a");
@@ -16,3 +17,9 @@ const TrackCard = ({ track, artistData }) => {
 };
 
 export default TrackCard;
+
+//adds the prop type object to the class
+TrackCard.propTypes = {
+  track: PropTypes.object,
+  artistData: PropTypes.string,
+};

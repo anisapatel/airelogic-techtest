@@ -2,6 +2,7 @@ import * as api from "../utils/Api";
 import Loader from "./Loader";
 import React, { Component } from "react";
 import ErrorPage from "./ErrorPage";
+import PropTypes from "prop-types";
 
 class TrackLyrics extends Component {
   state = { lyrics: "", isLoading: true };
@@ -26,3 +27,8 @@ class TrackLyrics extends Component {
 }
 
 export default TrackLyrics;
+
+TrackLyrics.propTypes = {
+  artist: PropTypes.string,
+  title: PropTypes.string,
+};

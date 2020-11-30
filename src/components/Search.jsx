@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/Api";
+import PropTypes from "prop-types";
 
 class Search extends Component {
   state = { input: "" };
@@ -31,3 +32,7 @@ class Search extends Component {
 }
 
 export default Search;
+
+Search.propTypes = {
+  handleSearchArtist: PropTypes.func,
+};
