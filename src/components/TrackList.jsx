@@ -50,12 +50,8 @@ class TrackList extends Component {
           <ol className="main__list">
             {this.state.trackList.map((track) => {
               return (
-                <li className="main__list__item">
-                  <TrackCard
-                    track={track}
-                    key={track.id}
-                    artistData={this.state.artistData}
-                  />
+                <li className="main__list__item" key={track.id}>
+                  <TrackCard track={track} artistData={this.state.artistData} />
                 </li>
               );
             })}
