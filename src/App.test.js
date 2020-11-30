@@ -1,8 +1,20 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, fireEvent, cleanup } from "@testing-library/react";
+import Search from "./components/Search";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+afterEach(cleanup);
+describe("Search component", () => {
+  const setup = () => {
+    const utils = render(<Search />);
+    const input = utils.getByLabelText("search-form__input");
+    return {
+      input,
+      ...utils,
+    };
+  };
+  test("onChange event handler's value changes upon input", () => {
+    const { input } = setup();
+    expect(input.value).toBe("");
+    fireEvent.change(input, { target: { value: "Beyonce" } });
+    expect(input.value).toBe("Beyonce");
+  });
 });

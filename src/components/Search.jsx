@@ -18,6 +18,7 @@ class Search extends Component {
       <form onSubmit={this.handleSubmit} className="search-form">
         <input
           type="text"
+          aria-label="search-form__input"
           onChange={this.handleChange}
           value={this.state.input}
           placeholder="Search any artist"
